@@ -1,0 +1,18 @@
+<p>
+  map works!
+</p>
+
+<input type="range" max="100" [(ngModel)]="radius">
+<span>{{radius}} miles</span>
+
+<button (click)="getNewPoint()">Random Marker</button>
+
+<sebm-google-map [latitude]="lat" [longitude]="lng">
+  <sebm-google-map-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng"></sebm-google-map-marker>
+  <sebm-google-map-circle [visible]="displayCircle" [latitude]="lat" [longitude]="lng" 
+        [radius]="radius * 1609"
+        [fillColor]="'red'"
+        [circleDraggable]="false"
+        [editable]="false">
+    </sebm-google-map-circle>
+</sebm-google-map>
